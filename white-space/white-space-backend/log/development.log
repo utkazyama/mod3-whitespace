@@ -1,0 +1,284 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateRoutines (20190708183558)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "routines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190708183558_create_routines.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190708183558"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateTodos (20190708183634)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateTodos (20190708183634)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateTodos (20190708183634)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190708183634_create_todos.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "duration" integer, "routine_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_47e7472964"
+FOREIGN KEY ("routine_id")
+  REFERENCES "routines" ("id")
+)[0m
+  ↳ db/migrate/20190708183634_create_todos.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_todos_on_routine_id" ON "todos" ("routine_id")[0m
+  ↳ db/migrate/20190708183634_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190708183634"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-07-08 19:08:10.926427"], ["updated_at", "2019-07-08 19:08:10.926427"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.4ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Sunday morning routine"], ["created_at", "2019-07-08 19:08:16.606924"], ["updated_at", "2019-07-08 19:08:16.606924"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.3ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Monday morning routine"], ["created_at", "2019-07-08 19:08:16.609803"], ["updated_at", "2019-07-08 19:08:16.609803"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.3ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Wednesday evening routine"], ["created_at", "2019-07-08 19:08:16.612054"], ["updated_at", "2019-07-08 19:08:16.612054"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.4ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Saturday night routine"], ["created_at", "2019-07-08 19:08:16.614391"], ["updated_at", "2019-07-08 19:08:16.614391"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Load (0.7ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateRoutines (20190708183558)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "routines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190708183558_create_routines.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190708183558"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateTodos (20190708183634)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "duration" varchar, "routine_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_47e7472964"
+FOREIGN KEY ("routine_id")
+  REFERENCES "routines" ("id")
+)[0m
+  ↳ db/migrate/20190708183634_create_todos.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_todos_on_routine_id" ON "todos" ("routine_id")[0m
+  ↳ db/migrate/20190708183634_create_todos.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190708183634"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-07-08 19:35:12.781484"], ["updated_at", "2019-07-08 19:35:12.781484"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.6ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Sunday morning routine"], ["created_at", "2019-07-08 19:35:18.355632"], ["updated_at", "2019-07-08 19:35:18.355632"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.3ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Monday morning routine"], ["created_at", "2019-07-08 19:35:18.358396"], ["updated_at", "2019-07-08 19:35:18.358396"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.3ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Wednesday evening routine"], ["created_at", "2019-07-08 19:35:18.360631"], ["updated_at", "2019-07-08 19:35:18.360631"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[36mRoutine Create (0.4ms)[0m  [1m[32mINSERT INTO "routines" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Saturday night routine"], ["created_at", "2019-07-08 19:35:18.363377"], ["updated_at", "2019-07-08 19:35:18.363377"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.2ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Cleaning"], ["duration", "25:00"], ["routine_id", 1], ["created_at", "2019-07-08 19:35:18.399365"], ["updated_at", "2019-07-08 19:35:18.399365"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Study"], ["duration", "25:00"], ["routine_id", 1], ["created_at", "2019-07-08 19:35:18.403493"], ["updated_at", "2019-07-08 19:35:18.403493"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Laundry"], ["duration", "15:00"], ["routine_id", 1], ["created_at", "2019-07-08 19:35:18.407820"], ["updated_at", "2019-07-08 19:35:18.407820"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Reading"], ["duration", "20:00"], ["routine_id", 1], ["created_at", "2019-07-08 19:35:18.411908"], ["updated_at", "2019-07-08 19:35:18.411908"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.6ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Cleaning"], ["duration", "25:00"], ["routine_id", 2], ["created_at", "2019-07-08 19:35:18.414956"], ["updated_at", "2019-07-08 19:35:18.414956"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Study"], ["duration", "25:00"], ["routine_id", 2], ["created_at", "2019-07-08 19:35:18.418876"], ["updated_at", "2019-07-08 19:35:18.418876"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Laundry"], ["duration", "15:00"], ["routine_id", 2], ["created_at", "2019-07-08 19:35:18.421889"], ["updated_at", "2019-07-08 19:35:18.421889"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Reading"], ["duration", "20:00"], ["routine_id", 2], ["created_at", "2019-07-08 19:35:18.425068"], ["updated_at", "2019-07-08 19:35:18.425068"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Cleaning"], ["duration", "25:00"], ["routine_id", 3], ["created_at", "2019-07-08 19:35:18.428169"], ["updated_at", "2019-07-08 19:35:18.428169"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Study"], ["duration", "25:00"], ["routine_id", 3], ["created_at", "2019-07-08 19:35:18.431023"], ["updated_at", "2019-07-08 19:35:18.431023"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Laundry"], ["duration", "15:00"], ["routine_id", 3], ["created_at", "2019-07-08 19:35:18.433851"], ["updated_at", "2019-07-08 19:35:18.433851"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.2ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Reading"], ["duration", "20:00"], ["routine_id", 3], ["created_at", "2019-07-08 19:35:18.436867"], ["updated_at", "2019-07-08 19:35:18.436867"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Cleaning"], ["duration", "25:00"], ["routine_id", 4], ["created_at", "2019-07-08 19:35:18.439517"], ["updated_at", "2019-07-08 19:35:18.439517"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Study"], ["duration", "25:00"], ["routine_id", 4], ["created_at", "2019-07-08 19:35:18.442369"], ["updated_at", "2019-07-08 19:35:18.442369"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Laundry"], ["duration", "15:00"], ["routine_id", 4], ["created_at", "2019-07-08 19:35:18.445461"], ["updated_at", "2019-07-08 19:35:18.445461"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" WHERE "routines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("name", "duration", "routine_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Reading"], ["duration", "20:00"], ["routine_id", 4], ["created_at", "2019-07-08 19:35:18.448943"], ["updated_at", "2019-07-08 19:35:18.448943"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mRoutine Load (0.4ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mRoutine Load (0.2ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" ORDER BY "routines"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRoutine Load (0.1ms)[0m  [1m[34mSELECT  "routines".* FROM "routines" ORDER BY "routines"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."routine_id" = ? LIMIT ?[0m  [["routine_id", 1], ["LIMIT", 11]]
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" LIMIT ?[0m  [["LIMIT", 11]]
