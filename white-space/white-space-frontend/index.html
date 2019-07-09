@@ -2,11 +2,53 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>White Space</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <header>
+      <h2>White Space</h2>
+    </header>
+
+    <main>
+      <div class="routine" style="display:inline">
+        Your Routine
+        <ul class="routineList">
+
+        </ul>
+
+        <form id="create-routine-form" action="#" method="post">
+          <input type="text" id="new-routine-title" name="new-routine-title" placeholder="">
+          <input type="submit">
+        </form>
+      </div>
+      <div class="todo" style="display:none">
+        Your Todos
+        <ul class="todoList">
+<!-- 
+        <div id="clockdiv">
+
+
+          <span class="minutes"></span>
+          <span class="seconds"></span>
+        </div> -->
+
+        </ul>
+
+        <form id="create-todo-form" action="#" method="post">
+          <input type="text" id="new-todo-name" name="new-todo-name" placeholder="">
+          <input type="text" id="new-todo-duration" name="new-todo-duration" placeholder="time">
+          <input type="submit">
+        </form>
+      </div>
+    </main>
+
+
+
+
 
     <script src="./src/index.js"></script>
+    <script src="./src/countdown.js"></script>
+
   </body>
 </html>
