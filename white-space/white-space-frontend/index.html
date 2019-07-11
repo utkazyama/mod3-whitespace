@@ -3,16 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>White Space</title>
+
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+   <body background="/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/black-and-white-black-and-white-busy-735795.png">
+
+ <div class="opening" sytle ="display:inline">
+   <video autoplay muted loop id="myVideo">
+     <source src="/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/Pexels Videos 2655.mp4" type="video/mp4">
+   </video>
+
+ </div>
+
+
     <header>
-      <h2>White Space</h2>
+      <!-- <h2>White Space</h2> -->
     </header>
 
     <main>
-      <div class="routine" style="display:inline">
-        Your Routine
+      <div class="login content" style="display:inline">
+
+        <img class="white-logo content" src="/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/whitespacelogo_vwhite.png">
+
+      </div>
+
+
+
+      <div class="routine" style="display:none">
+
+        <img class="logo" src="/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/whitespacelogo_v4.png">
+        <!-- Your Routine -->
         <ul class="routineList">
 
         </ul>
@@ -22,25 +42,23 @@
           <input type="submit">
         </form>
       </div>
+
+
       <div class="todo" style="display:none">
-        Your Todos
+        <img class="logo" src="/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/whitespacelogo_v4.png">
+
         <ul class="todoList">
-<!-- 
-        <div id="clockdiv">
-
-
-          <span class="minutes"></span>
-          <span class="seconds"></span>
-        </div> -->
+        <!-- Timer: <span id="time">00:00</span> -->
 
         </ul>
 
         <form id="create-todo-form" action="#" method="post">
           <input type="text" id="new-todo-name" name="new-todo-name" placeholder="">
-          <input type="text" id="new-todo-duration" name="new-todo-duration" placeholder="time">
+          <input type="text" id="new-todo-duration" name="new-todo-duration" placeholder="minutes">
           <input type="submit">
         </form>
       </div>
+
     </main>
 
 
@@ -48,7 +66,6 @@
 
 
     <script src="./src/index.js"></script>
-    <script src="./src/countdown.js"></script>
 
   </body>
 </html>
