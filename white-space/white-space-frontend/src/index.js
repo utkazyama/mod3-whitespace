@@ -15,6 +15,16 @@ backbutton.innerText = "back"
 mainTodo.append(backbutton)
 
 backbutton.addEventListener("click", () => {
+  // const li = e.target.previousSibling.parentNode.children[1].children
+
+  const previousLi = document.querySelectorAll(".todoList li")
+  previousLi.forEach((i) => i.remove())
+  console.log(previousLi)
+  // previousLi.remove()
+  // debugger
+//
+// console.log(li.data)
+
   mainRoutine.style = "display:inline"
   mainTodo.style = "display:none"
   body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/background-cement-concrete-242236.jpg')"
@@ -36,9 +46,17 @@ function startTimer(duration, display) {
 
         if (--timer < -1) {
             clearInterval(a)
-            // let li = display.parentNode
-            li.remove()
-            alert("Good Job! Take a rest!")
+            const rest = document.querySelector(".rest")
+            rest.style = "display:inline"
+            body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/blur-calm-waters-dawn-395198.jpg')"
+            li.innerText = "Take a rest!"
+            li.style.background =""
+            li.style.color="black"
+            setTimeout(function() {
+              li.remove()
+              body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/clop-adventure-black-and-white-boat-910213.png')"
+            }, 8000);
+
         }
     }, 1000);
 }
@@ -74,7 +92,7 @@ function renderRoutines(routine){
 
       // deleteButton.src = "/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/whitespacelogo_v1.png"
 
-      li.innerText = routine.title
+      li.innerText = `${routine.title}  `
 
 
       li.append(deleteButton)
@@ -90,6 +108,22 @@ function renderRoutines(routine){
       })
 
 
+      li.addEventListener("mouseover", (e) => {
+
+        e.target.style.color = "white";
+        e.target.style.background = "black";
+        // e.target.style.padding = "5px";
+        // e.target.style.fontSize = "60px"
+      })
+
+      li.addEventListener("mouseout", (e) => {
+          e.target.style.color = "black";
+          e.target.style.background = "";
+          // e.target.style.padding = "";
+          // e.target.style.fontSize = "40px"
+        })
+
+
       li.addEventListener("click", (e) => {
         let id = routine.id
         if (e.target === deleteButton){
@@ -97,6 +131,7 @@ function renderRoutines(routine){
         fetch(TODOS_URL)
         .then(resp => resp.json())
         .then(data => renderTodos(data, id))}
+
       })
 
 
@@ -125,12 +160,12 @@ function renderRoutines(routine){
 
 
   function renderTodos(todos, id){
+
     const newTodoForm = document.querySelector("#create-todo-form")
     newTodoForm.dataset.routine_id = id
     const newTodoName = document.querySelector("#new-todo-name")
     const newTodoDuration = document.querySelector('#new-todo-duration')
 
-    // body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/art-artist-background-316466.jpg')"
     body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/clop-adventure-black-and-white-boat-910213.png')"
 
 
@@ -148,7 +183,7 @@ function renderRoutines(routine){
       }
 
       if (parseInt(newTodoDuration.value) > 25){
-        alert("Too long!")
+        alert("You work too long, the max duration is 25min!")
         newTodoDuration.value=""
       }else{
 
@@ -178,16 +213,12 @@ function renderRoutines(routine){
 
         h4.setAttribute("id", id)
 
-        // startTimerButton.innerText = "Start"
 
         deleteButton.innerHTML = `<img src="">`
 
         li.innerText = `${todo.name}      `
         h4.innerText = `    ${todo.duration}:00  `
 
-
-
-        // h4.append(startTimerButton)
         li.append(h4, deleteButton)
         todoList.append(li)
 
@@ -201,8 +232,7 @@ function renderRoutines(routine){
         })
 
         li.addEventListener("click", () => {
-          // const otherFont = document.querySelector("html")
-          // otherFont.style.fontWeight = "lighter"
+
 
           const body = document.querySelector("body")
           li.style.background = "black"
@@ -210,68 +240,62 @@ function renderRoutines(routine){
           li.style.padding = "5px"
           li.style.fontSize = "80px"
 
-
-          // body.style.background =
         let num = todo.duration
         let todoDuration = 60 * num
         let id = todo.id
             display = document.getElementById(id);
         startTimer(todoDuration, display)})
       }
+      // debugger
       })
 
 
   function renderTodo(todo){
-    const li = document.createElement("li")
-    const h4 = document.createElement("span")
-    const deleteButton = document.createElement("button")
-    const br = document.createElement("br")
+
+      const li = document.createElement("li")
+      const h4 = document.createElement("span")
+      const deleteButton = document.createElement("button")
+      const br = document.createElement("br")
 
 
 
-    let id = todo.id
-
-    h4.setAttribute("id", id)
-
-    // startTimerButton.innerText = "Start"
-
-    deleteButton.innerHTML = `<img src="">`
-
-    li.innerText = `${todo.name}      `
-    h4.innerText = `    ${todo.duration}:00  `
-
-
-
-    // h4.append(startTimerButton)
-    li.append(h4, deleteButton)
-    todoList.append(li)
-
-    deleteButton.addEventListener("click", () => {
       let id = todo.id
-      fetch(TODOS_URL + `/${id}`, {
-        method: "DELETE"
+
+      h4.setAttribute("id", id)
+
+
+      deleteButton.innerHTML = `<img src="">`
+
+      li.innerText = `${todo.name}      `
+      h4.innerText = `    ${todo.duration}:00  `
+
+      li.append(h4, deleteButton)
+      todoList.append(li)
+
+      deleteButton.addEventListener("click", () => {
+        let id = todo.id
+        fetch(TODOS_URL + `/${id}`, {
+          method: "DELETE"
+        })
+        li.remove()
+        deleteButton.remove()
       })
-      li.remove()
-      deleteButton.remove()
-    })
 
-    li.addEventListener("click", () => {
-      // const otherFont = document.querySelector("html")
-      // otherFont.style.fontWeight = "lighter"
-
-      const body = document.querySelector("body")
-      li.style.background = "black"
-      li.style.color = "white"
-      li.style.padding = "5px"
-      li.style.fontSize = "80px"
+      li.addEventListener("click", () => {
 
 
-      // body.style.background =
-    let num = todo.duration
-    let todoDuration = 60 * num
-    let id = todo.id
-        display = document.getElementById(id);
-    startTimer(todoDuration, display)})
+        const body = document.querySelector("body")
+        li.style.background = "black"
+        li.style.color = "white"
+        li.style.padding = "5px"
+        li.style.fontSize = "80px"
+
+      let num = todo.duration
+      let todoDuration = 60 * num
+      let id = todo.id
+          display = document.getElementById(id);
+      startTimer(todoDuration, display)})
+
   }
 }
 

@@ -24,6 +24,10 @@ main{
 
 }
 
+button{
+  outline: none;
+}
+
 .white-logo {
   width: 55%;
   /* margin-top: 490px; */
