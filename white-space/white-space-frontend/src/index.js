@@ -13,20 +13,14 @@ let a;
 const header = document.querySelector("header")
 
 backbutton.className = "back"
-backbutton.innerText = "back"
+backbutton.innerText = "<<Back"
 mainTodo.append(backbutton)
-// header.append(backbutton)
+
 
 backbutton.addEventListener("click", () => {
-  // const li = e.target.previousSibling.parentNode.children[1].children
-
   const previousLi = document.querySelectorAll(".todoList li")
   previousLi.forEach((i) => i.remove())
   console.log(previousLi)
-  // previousLi.remove()
-  // debugger
-//
-// console.log(li.data)
 
   mainRoutine.style = "display:inline"
   mainTodo.style = "display:none"
@@ -51,14 +45,14 @@ function startTimer(duration, display) {
             clearInterval(a)
             const rest = document.querySelector(".rest")
             rest.style = "display:inline"
-            body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/blur-calm-waters-dawn-395198.jpg')"
+            body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/banana-close-up-colors-1166648.png')"
             li.innerText = "Take a rest!"
             li.style.background =""
             li.style.color="black"
             setTimeout(function() {
               li.remove()
               body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/clop-adventure-black-and-white-boat-910213.png')"
-            }, 8000);
+            }, 6000);
 
         }
     }, 1000);
@@ -115,14 +109,14 @@ function renderRoutines(routine){
 
         e.target.style.color = "white";
         e.target.style.background = "black";
-        // e.target.style.padding = "5px";
+        e.target.style.paddingLeft = "10px";
         // e.target.style.fontSize = "60px"
       })
 
       li.addEventListener("mouseout", (e) => {
           e.target.style.color = "black";
           e.target.style.background = "";
-          // e.target.style.padding = "";
+          e.target.style.paddingLeft = "";
           // e.target.style.fontSize = "40px"
         })
 
@@ -211,13 +205,10 @@ function renderRoutines(routine){
         const br = document.createElement("br")
 
 
-
         let id = todo.id
 
         h4.setAttribute("id", id)
 
-
-        deleteButton.innerHTML = `<img src="">`
 
         li.innerText = `${todo.name}      `
         h4.innerText = `    ${todo.duration}:00  `
@@ -260,14 +251,9 @@ function renderRoutines(routine){
       const deleteButton = document.createElement("button")
       const br = document.createElement("br")
 
-
-
       let id = todo.id
 
       h4.setAttribute("id", id)
-
-
-      deleteButton.innerHTML = `<img src="">`
 
       li.innerText = `${todo.name}      `
       h4.innerText = `    ${todo.duration}:00  `
