@@ -7,6 +7,59 @@ const mainRoutine = document.querySelector(".routine")
 const mainTodo = document.querySelector(".todo")
 const routineList = document.querySelector(".routineList")
 const todoList = document.querySelector(".todoList")
+const backbutton = document.createElement('button')
+const body = document.querySelector("body")
+let a;
+
+backbutton.innerText = "back"
+mainTodo.append(backbutton)
+
+backbutton.addEventListener("click", () => {
+  // const li = e.target.previousSibling.parentNode.children[1].children
+
+  const previousLi = document.querySelectorAll(".todoList li")
+  previousLi.forEach((i) => i.remove())
+  console.log(previousLi)
+  // previousLi.remove()
+  // debugger
+//
+// console.log(li.data)
+
+  mainRoutine.style = "display:inline"
+  mainTodo.style = "display:none"
+  body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/background-cement-concrete-242236.jpg')"
+})
+
+
+function startTimer(duration, display) {
+  let li = display.parentNode
+   clearInterval(a)
+    let timer = duration, minutes, seconds;
+    a = setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds　+" ";
+
+        if (--timer < -1) {
+            clearInterval(a)
+            const rest = document.querySelector(".rest")
+            rest.style = "display:inline"
+            body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/blur-calm-waters-dawn-395198.jpg')"
+            li.innerText = "Take a rest!"
+            li.style.background =""
+            li.style.color="black"
+            setTimeout(function() {
+              li.remove()
+              body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/clop-adventure-black-and-white-boat-910213.png')"
+            }, 8000);
+
+        }
+    }, 1000);
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,16 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
   .then(resp => resp.json())
   .then(data => data.forEach((routine) => {renderRoutines(routine)}))
 
+  const logo = document.querySelector(".white-logo")
+
+  logo.addEventListener("click", () => {
+    const login = document.querySelector(".login")
+    const start = document.querySelector(".routine")
+    const opening = document.querySelector(".opening")
+
+
+    login.style = "display:none"
+    opening.style = "display:none"
+    start.style = "display:inline"
+
+    body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/background-cement-concrete-242236.jpg')"
+
+
+  })
+
 function renderRoutines(routine){
 
       const li = document.createElement("li")
       const deleteButton = document.createElement("button")
+      const br = document.createElement("br")
 
-      deleteButton.innerHTML = `<img src="">`
+      // deleteButton.src = "/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/whitespacelogo_v1.png"
 
-      li.innerText = routine.title
+      li.innerText = `${routine.title}  `
 
-      routineList.append(li, deleteButton)
+
+      li.append(deleteButton)
+      routineList.append(li, br)
 
       deleteButton.addEventListener("click", () => {
         let id = routine.id
@@ -35,12 +108,29 @@ function renderRoutines(routine){
       })
 
 
+      li.addEventListener("mouseover", (e) => {
+
+        e.target.style.color = "white";
+        e.target.style.background = "black";
+        // e.target.style.padding = "5px";
+        // e.target.style.fontSize = "60px"
+      })
+
+      li.addEventListener("mouseout", (e) => {
+          e.target.style.color = "black";
+          e.target.style.background = "";
+          // e.target.style.padding = "";
+          // e.target.style.fontSize = "40px"
+        })
+
+
       li.addEventListener("click", (e) => {
         let id = routine.id
-        li.style.color = "red"
+        if (e.target === deleteButton){
+        }else{
         fetch(TODOS_URL)
         .then(resp => resp.json())
-        .then(data => renderTodos(data, id))
+        .then(data => renderTodos(data, id))}
 
       })
 
@@ -70,10 +160,16 @@ function renderRoutines(routine){
 
 
   function renderTodos(todos, id){
+
     const newTodoForm = document.querySelector("#create-todo-form")
     newTodoForm.dataset.routine_id = id
     const newTodoName = document.querySelector("#new-todo-name")
     const newTodoDuration = document.querySelector('#new-todo-duration')
+
+    body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/clop-adventure-black-and-white-boat-910213.png')"
+
+
+
 
     mainRoutine.style = "display:none"
     mainTodo.style = "display:inline"
@@ -86,6 +182,11 @@ function renderRoutines(routine){
         duration: newTodoDuration.value
       }
 
+      if (parseInt(newTodoDuration.value) > 25){
+        alert("You work too long, the max duration is 25min!")
+        newTodoDuration.value=""
+      }else{
+
       fetch(TODOS_URL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -95,30 +196,30 @@ function renderRoutines(routine){
       .then(data => {
         newTodoName.value=""
         newTodoDuration.value=""
-      })
+        renderTodo(data)
+      })}
     })
 
     todos.forEach((todo) => {
       if (id === todo.routine_id) {
         const li = document.createElement("li")
-        const h4 = document.createElement("h4")
-        const clockdiv = document.createElement("div")
-        const minutesSpan = document.createElement("span")
-        const secondsSpan = document.createElement("span")
+        const h4 = document.createElement("span")
         const deleteButton = document.createElement("button")
+        const br = document.createElement("br")
 
-        clockdiv.setAttribute("id", "clockdiv")
-        minutesSpan.className = "minutes"
-        secondsSpan.className = "seconds"
+
+
+        let id = todo.id
+
+        h4.setAttribute("id", id)
+
 
         deleteButton.innerHTML = `<img src="">`
 
-        li.innerText = todo.name
-        h4.innerText = todo.duration
+        li.innerText = `${todo.name}      `
+        h4.innerText = `    ${todo.duration}:00  `
 
-        clockdiv.append(minutesSpan, secondsSpan)
-
-        li.append(h4,clockdiv, deleteButton)
+        li.append(h4, deleteButton)
         todoList.append(li)
 
         deleteButton.addEventListener("click", () => {
@@ -129,44 +230,74 @@ function renderRoutines(routine){
           li.remove()
           deleteButton.remove()
         })
+
+        li.addEventListener("click", () => {
+
+
+          const body = document.querySelector("body")
+          li.style.background = "black"
+          li.style.color = "white"
+          li.style.padding = "5px"
+          li.style.fontSize = "80px"
+
+        let num = todo.duration
+        let todoDuration = 60 * num
+        let id = todo.id
+            display = document.getElementById(id);
+        startTimer(todoDuration, display)})
       }
+      // debugger
       })
 
-      function renderTodo(){
-        const li = document.createElement("li")
-        const h4 = document.createElement("h4")
-        const clockdiv = document.createElement("div")
-        const minutesSpan = document.createElement("span")
-        const secondsSpan = document.createElement("span")
-        const deleteButton = document.createElement("button")
 
-        clockdiv.setAttribute("id", "clockdiv")
-        minutesSpan.className = "minutes"
-        secondsSpan.className = "seconds"
+  function renderTodo(todo){
 
-        deleteButton.innerHTML = `<img src="">`
+      const li = document.createElement("li")
+      const h4 = document.createElement("span")
+      const deleteButton = document.createElement("button")
+      const br = document.createElement("br")
 
-        li.innerText = todo.name
-        h4.innerText = todo.duration
 
-        clockdiv.append(minutesSpan, secondsSpan)
 
-        li.append(h4,clockdiv, deleteButton)
-        todoList.append(li)
+      let id = todo.id
 
-        deleteButton.addEventListener("click", () => {
-          let id = todo.id
-          fetch(TODOS_URL + `/${id}`, {
-            method: "DELETE"
-          })
-          li.remove()
-          deleteButton.remove()
+      h4.setAttribute("id", id)
+
+
+      deleteButton.innerHTML = `<img src="">`
+
+      li.innerText = `${todo.name}      `
+      h4.innerText = `    ${todo.duration}:00  `
+
+      li.append(h4, deleteButton)
+      todoList.append(li)
+
+      deleteButton.addEventListener("click", () => {
+        let id = todo.id
+        fetch(TODOS_URL + `/${id}`, {
+          method: "DELETE"
         })
+        li.remove()
+        deleteButton.remove()
+      })
 
-      }
+      li.addEventListener("click", () => {
 
-      mainTodo.append(todoList);
+
+        const body = document.querySelector("body")
+        li.style.background = "black"
+        li.style.color = "white"
+        li.style.padding = "5px"
+        li.style.fontSize = "80px"
+
+      let num = todo.duration
+      let todoDuration = 60 * num
+      let id = todo.id
+          display = document.getElementById(id);
+      startTimer(todoDuration, display)})
+
   }
+}
 
 
 })
