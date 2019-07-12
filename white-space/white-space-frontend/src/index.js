@@ -10,9 +10,12 @@ const todoList = document.querySelector(".todoList")
 const backbutton = document.createElement('button')
 const body = document.querySelector("body")
 let a;
+const header = document.querySelector("header")
 
+backbutton.className = "back"
 backbutton.innerText = "back"
 mainTodo.append(backbutton)
+// header.append(backbutton)
 
 backbutton.addEventListener("click", () => {
   // const li = e.target.previousSibling.parentNode.children[1].children
@@ -27,7 +30,7 @@ backbutton.addEventListener("click", () => {
 
   mainRoutine.style = "display:inline"
   mainTodo.style = "display:none"
-  body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/background-cement-concrete-242236.jpg')"
+  body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/background-blank-empty-62693.png')"
 })
 
 
@@ -79,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     opening.style = "display:none"
     start.style = "display:inline"
 
-    body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/background-cement-concrete-242236.jpg')"
+    body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/background-blank-empty-62693.png')"
 
 
   })

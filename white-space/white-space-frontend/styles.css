@@ -35,8 +35,19 @@ button{
   margin-bottom: 40px;
 }
 
+.back{
+  outline: none;
+  /* margin-left: 800px; */
+  margin-bottom: 1000px;
+
+}
+
 ul {
-  margin-left: 700px
+  margin-left: 700px;
+}
+
+#create-todo-form{
+  margin-left: 745px;
 }
 
 li {
