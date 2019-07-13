@@ -41,6 +41,20 @@ function startTimer(duration, display) {
 
         display.textContent = minutes + ":" + seconds　+" ";
 
+        li.addEventListener("click", ()=>{
+          clearInterval(a)
+          const rest = document.querySelector(".rest")
+          rest.style = "display:inline"
+          body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/banana-close-up-colors-1166648.png')"
+          li.innerText = "Take a rest!"
+          li.style.background =""
+          li.style.color="black"
+          setTimeout(function() {
+            li.remove()
+            body.style.backgroundImage = "url('/Users/yutakatsuyama/flatiron/mod3_project/mod3-whitespace/clop-adventure-black-and-white-boat-910213.png')"
+          }, 6000);
+        })
+
         if (--timer < -1) {
             clearInterval(a)
             const rest = document.querySelector(".rest")
