@@ -40,7 +40,7 @@ main{
   display: inline-block;
   font-size: 12px;
   outline: none;
-  border-radius: 2px;
+  border-radius: 10px;
   position: absolute;
   left: 50px;
   bottom: 100px;
@@ -48,6 +48,7 @@ main{
 
 .back:hover {
   background-color: gray ;
+  border-radius: 10px;
   color: white;
 }
 
